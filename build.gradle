@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '1.17.3'
+}
+
+group 'com.solidity.jetbrains'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+intellij {
+    pluginName = project.findProperty("pluginName") ?: "Solidity Light"
+    version = project.findProperty("platformVersion") ?: "2022.1.4"
+    type = project.findProperty("platformType") ?: "IC"
+    updateSinceUntilBuild.set(false)
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks {
+    patchPluginXml {
+        version.set(project.findProperty("pluginVersion") ?: "1.0")
+        sinceBuild.set(project.findProperty("pluginSinceBuild") ?: "221")
+        // don't set untilBuild
+    }
+}
