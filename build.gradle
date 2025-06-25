@@ -4,14 +4,14 @@ plugins {
 }
 
 group 'com.solidity.jetbrains'
-version '1.0'
+version '1.1'
 
 repositories {
     mavenCentral()
 }
 
 intellij {
-    pluginName = project.findProperty("pluginName") ?: "Solidity Light"
+    pluginName = project.findProperty("pluginName") ?: "Solidity Lite"
     version = project.findProperty("platformVersion") ?: "2022.1.4"
     type = project.findProperty("platformType") ?: "IC"
     updateSinceUntilBuild.set(false)
@@ -24,7 +24,7 @@ java {
 
 tasks {
     patchPluginXml {
-        version.set(project.findProperty("pluginVersion") ?: "1.0")
+        version.set(project.findProperty("pluginVersion") ?: "1.1")
         sinceBuild.set(project.findProperty("pluginSinceBuild") ?: "221")
         // don't set untilBuild
     }
